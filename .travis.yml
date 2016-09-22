@@ -1,0 +1,19 @@
+language: ruby
+rvm:
+- 2.0.0
+- 1.9.3
+- jruby-19mode
+- rbx-2
+deploy:
+  provider: heroku
+  api_key:
+    secure: GJtTgIFdDupILz+4c4zxjIfg/To92/60S6GTmDtqSJFGYPJIDa5Eot2/bcJcRmZDbDj8m9wnPIb5nes7UB43cXl0+L8ujVymSWdf2XlCEG9lXoaYKWlVHiIdoj/fAG3VFzuHjrmOa/5mv8H2WyenH29vVjjGxBS+ujZgzRneLqlEIR9do95qwmlIivB2tJDv9AWZUzRRDbx0mOXYiIo1c2NgZA867x9wpnAUIK+SM9/xHc6tBoWUvaXaZnYaY4x88OA9x9Xc/nvAgHRsDsHhQooYi7qeG5cCTlJK4Lz7yh2WJtlJ05nNvybz/TGsuRartOpbe3N4sqzgmqcAfhQaBGIOiE9E6Iites+44qYP6sczcQDGyOXDgZK70oO5yqME5+QokRJJ2qOfAsGlD0AqO5ceL9MYzlpqN12ddrbkCdk/c5A+FxcggwhJZWL01QzxPW9Or+v7JaVLzMbupNuIszejiHPtD1ByVsAOZmxf+v6ckUYag36RwLgOXe+YLh/Z86N1l7Pqma2Vsaf66pD1/ZKNUFsLSMK9gYNhVSS9vlYi1yadfemxUSvnsiYuH+CkdyoFpMyVy+WXmMMmH2gSapaLSez0jAh7rBvfX59zV1QFt3I1irEmr0D6te+osUul2CkafGXQvIzrQZ4FlJL1bFI6TqYQZciTu5ejb9ggLZg=
+  app: fast-island-35265
+  on:
+    repo: a-rom/rails_enpit
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+  - rake db:migrate RAILS_ENV=test # いらない？
