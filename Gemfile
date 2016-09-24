@@ -48,3 +48,5 @@ group :development do
   gem 'spring'
 end
 
+gem 'rakuten_web_service'
+
