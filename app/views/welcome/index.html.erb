@@ -1,4 +1,9 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<form action="/books">
+  <div class="col-xs-4">
+    <div class="input-group">
+      <span class="input-group-addon">検索キーワード</span>
+      <input type="text" name="keyword" class="form-control" placeholder="キーワードは半角スペースで区切"/>
+    </div>
+  </div>
+  <input class="btn btn-default" type="submit" value="検索"/>
+</form>
