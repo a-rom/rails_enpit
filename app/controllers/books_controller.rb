@@ -7,9 +7,11 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
-  # GET /books/1
-  # GET /books/1.json
+  # GET /books/$ISBNするとRakutenブックスAPIから必要な情報を取得する
+  # GET /books/$ISBN.json
   def show
+    @item = RakutenWebService::Book::Item.
+
   end
 
   # GET /books/new
